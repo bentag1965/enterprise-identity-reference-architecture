@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "id": "u-001",
+      "displayName": "Example Admin",
+      "enabled": true,
+      "mfaRegistered": true,
+      "lastSignInDaysAgo": 2,
+      "roles": ["Global Administrator"],
+      "assignmentType": "eligible",
+      "directAssignments": []
+    },
+    {
+      "id": "u-002",
+      "displayName": "Dormant User",
+      "enabled": true,
+      "mfaRegistered": false,
+      "lastSignInDaysAgo": 140,
+      "roles": [],
+      "assignmentType": "none",
+      "directAssignments": ["Example SaaS App"]
+    },
+    {
+      "id": "u-003",
+      "displayName": "Standing Admin",
+      "enabled": true,
+      "mfaRegistered": false,
+      "lastSignInDaysAgo": 1,
+      "roles": ["Global Administrator"],
+      "assignmentType": "standing",
+      "directAssignments": []
+    }
+  ],
+  "emergencyAccessAccounts": [
+    {
+      "id": "ea-001",
+      "enabled": true,
+      "lastTestDaysAgo": 75,
+      "monitored": true
+    },
+    {
+      "id": "ea-002",
+      "enabled": true,
+      "lastTestDaysAgo": 20,
+      "monitored": false
+    }
+  ],
+  "servicePrincipals": [
+    {
+      "id": "sp-001",
+      "name": "Automation Worker",
+      "owners": ["team-automation"],
+      "credentialDaysRemaining": 120,
+      "permissions": ["Example.Read"]
+    },
+    {
+      "id": "sp-002",
+      "name": "Legacy Integration",
+      "owners": [],
+      "credentialDaysRemaining": 12,
+      "permissions": ["Example.ReadWrite.All"]
+    }
+  ]
+}
