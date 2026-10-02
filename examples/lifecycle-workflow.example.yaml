@@ -1,0 +1,25 @@
+joiner:
+  source: authoritative-hr
+  actions:
+    - create_identity
+    - assign_baseline_groups
+    - assign_role_groups
+    - require_mfa_registration
+    - notify_manager
+
+mover:
+  actions:
+    - compare_old_and_new_role
+    - remove_obsolete_access
+    - add_new_role_access
+    - review_privileged_assignments
+    - record_access_delta
+
+leaver:
+  actions:
+    - block_sign_in
+    - revoke_sessions
+    - remove_privilege
+    - remove_application_access
+    - transfer_owned_resources
+    - retain_or_delete_per_policy
