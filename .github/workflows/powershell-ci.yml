@@ -1,0 +1,31 @@
+name: PowerShell CI
+
+on:
+  push:
+    paths:
+      - "scripts/**"
+      - ".github/workflows/powershell-ci.yml"
+  pull_request:
+    paths:
+      - "scripts/**"
+      - ".github/workflows/powershell-ci.yml"
+
+jobs:
+  analyze:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install PSScriptAnalyzer
+        shell: pwsh
+        run: Install-Module PSScriptAnalyzer -Force -Scope CurrentUser
+      - name: Analyze scripts
+        shell: pwsh
+        run: |
+          $results = Invoke-ScriptAnalyzer -Path ./scripts -Recurse
+          $results | Format-Table
+          if ($results.Severity -contains 'Error') { exit 1 }
+      - name: Run example assessment
+        shell: pwsh
+        run: |
+          ./scripts/Invoke-IdentityArchitectureAssessment.ps1 -Path ./examples/tenant-snapshot.example.json | Out-Null
