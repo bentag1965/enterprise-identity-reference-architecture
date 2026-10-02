@@ -1,0 +1,8 @@
+.env
+.env.*
+*.log
+*.csv
+*.xlsx
+*.json.local
+.vscode/
+.idea/
