@@ -1,0 +1,22 @@
+{
+  "roles": [
+    {
+      "name": "Service Desk",
+      "groups": ["GRP-ServiceDesk-Baseline"],
+      "applications": ["Ticketing", "Endpoint Support"],
+      "privilegedRoles": []
+    },
+    {
+      "name": "Identity Administrator",
+      "groups": ["GRP-IdentityOps"],
+      "applications": ["Identity Operations"],
+      "privilegedRoles": [
+        {
+          "role": "Identity Administrator",
+          "assignment": "eligible",
+          "maxActivationHours": 2
+        }
+      ]
+    }
+  ]
+}
