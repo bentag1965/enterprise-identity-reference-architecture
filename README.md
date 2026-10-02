@@ -2,6 +2,18 @@
 
 A portfolio-safe reference architecture for enterprise identity and access management centered on Microsoft Entra ID concepts: lifecycle automation, SSO, group-based access, RBAC, privileged access, Conditional Access, emergency access, auditability, and incident response.
 
+## Executive Lens
+
+Identity is not just an authentication service; it is an enterprise control plane. This reference architecture demonstrates how I think about access as an operating model spanning lifecycle, least privilege, Conditional Access, emergency access, workload identities, observability, and incident response.
+
+**Leadership questions this design addresses:**
+
+- How do we reduce access drift as people join, move, and leave?
+- Where should privilege be standing versus eligible and time-bound?
+- How do we preserve emergency access without weakening the normal control model?
+- How do we govern service principals and automation identities with the same seriousness as human identities?
+- What evidence should exist when access or privilege is challenged later?
+
 This repository is intentionally tenant-neutral. It contains no employer configuration, production tenant identifiers, credentials, user data, or customer-specific policy exports.
 
 ## What This Project Demonstrates
@@ -142,3 +154,16 @@ The script is designed to demonstrate identity-control reasoning without exposin
 ## Portfolio Boundary
 
 This project is a reference implementation. It does not claim to represent any specific employer's tenant, policies, licensing, or production architecture.
+
+
+## Tradeoffs and Decisions
+
+- **Group-based access over direct assignment:** easier lifecycle management and cleaner auditability, at the cost of requiring stronger group ownership and naming discipline.
+- **Eligible privilege over standing privilege:** reduces exposure but depends on a usable elevation process and reliable emergency access.
+- **Conditional Access by risk and resource:** stronger than a single global rule, but requires careful exception handling to avoid accidental lockout.
+- **Sanitized assessment snapshots instead of live-tenant modification:** safer for a public portfolio and useful for demonstrating reasoning, while intentionally avoiding claims of production deployment.
+
+## What I Would Improve Next
+
+I would extend the model with automated entitlement review evidence, richer workload-identity inventory, risk-based access analytics, and a clearer mapping between business roles and technical authorization. In a production program, I would also connect identity telemetry directly into operational incident and change-management workflows.
+
